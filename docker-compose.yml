@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  client:
+    image: 'kurtis/client:latest'
+    ports:
+      - 8080:8080
+
+  server:
+    image: 'kurtis/server:latest'
