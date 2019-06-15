@@ -67,6 +67,39 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>dockerBuild</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<from>
+						<image>openjdk:8-jre-alpine</image>
+					</from>
+					<to>
+						<image>kurtis/${project.artifactId}:${project.version}</image>
+						<image>kurtis/${project.artifactId}:latest</image>
+					</to>
+					<container>
+						<ports>
+							<port>8080</port>
+						</ports>
+						<jvmFlags>
+							<jvmFlag>-noverify</jvmFlag>
+							<jvmFlag>-XX:TieredStopAtLevel=1</jvmFlag>
+							<jvmFlag>-XX:+UnlockExperimentalVMOptions</jvmFlag>
+							<jvmFlag>-XX:+UseCGroupMemoryLimitForHeap</jvmFlag>
+						</jvmFlags>
+					</container>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
