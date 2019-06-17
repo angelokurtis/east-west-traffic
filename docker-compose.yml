@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   client:
-    image: 'kurtis/client:1.0.0'
+    image: 'kurtis/client:2.0.0-SNAPSHOT'
     ports:
       - 8080:8081
     environment:
@@ -10,6 +10,6 @@ services:
       - GRPC_PORT=6565
 
   server:
-    image: 'kurtis/server:1.0.0'
+    image: 'kurtis/server:2.0.0-SNAPSHOT'
     environment:
       - GRPC_PORT=6565
