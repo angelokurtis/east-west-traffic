@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.kurtis</groupId>
 	<artifactId>server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>server</name>
 	<description>Demo project for gRPC Server</description>
 
@@ -120,7 +120,6 @@
 					</from>
 					<to>
 						<image>kurtis/${project.artifactId}:${project.version}</image>
-						<image>kurtis/${project.artifactId}:latest</image>
 					</to>
 					<container>
 						<ports>
