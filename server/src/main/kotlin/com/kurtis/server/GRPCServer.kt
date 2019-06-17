@@ -3,17 +3,17 @@ package com.kurtis.server
 import com.google.common.util.concurrent.ThreadFactoryBuilder
 import io.grpc.ServerBuilder
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import javax.annotation.PostConstruct
 import javax.annotation.PreDestroy
 
-private const val PORT = 6565
 private val logger = KotlinLogging.logger {}
 
 @Component
-class GRPCServer(val helloService: HelloService) {
+class GRPCServer(val helloService: HelloService, @Value("\${grpc.port}") val port: Int) {
 
     private val executor = Executors.newSingleThreadScheduledExecutor(ThreadFactoryBuilder()
             .setNameFormat("grpc-server")
@@ -34,10 +34,10 @@ class GRPCServer(val helloService: HelloService) {
     }
 
     private fun startGRPCServer() {
-        val server = ServerBuilder.forPort(PORT)
+        val server = ServerBuilder.forPort(port)
                 .addService(helloService)
                 .build()
-        logger.info { "Running the gRPC Server on port $PORT" }
+        logger.info { "Running the gRPC Server on port $port" }
 
         server.start()
         server.awaitTermination()
